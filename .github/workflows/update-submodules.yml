@@ -1,0 +1,34 @@
+name: Update submodules
+
+on:
+  repository_dispatch:
+    types: [submodule-merged]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-submodules
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Move every submodule to the latest main
+        run: |
+          git submodule update --init --remote --depth 1
+          git add puzzles-android puzzles-web puzzles-data
+          if git diff --cached --quiet; then
+            echo "Already up to date"
+            exit 0
+          fi
+          summary=$(git diff --cached --submodule=short | grep '^Submodule' | sed 's/^Submodule //')
+          git -c user.name="github-actions[bot]" \
+            -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Update submodules" -m "$summary"
+          git push

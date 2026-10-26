@@ -1,0 +1,12 @@
+[submodule "puzzles-android"]
+	path = puzzles-android
+	url = https://github.com/joclegg/puzzles-android.git
+	branch = main
+[submodule "puzzles-web"]
+	path = puzzles-web
+	url = https://github.com/joclegg/puzzles-web.git
+	branch = main
+[submodule "puzzles-data"]
+	path = puzzles-data
+	url = https://github.com/joclegg/puzzles-data.git
+	branch = main
