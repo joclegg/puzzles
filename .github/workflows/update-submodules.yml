@@ -4,8 +4,6 @@ on:
   repository_dispatch:
     types: [submodule-merged]
   workflow_dispatch:
-  schedule:
-    - cron: "17 * * * *"
 
 permissions:
   contents: write

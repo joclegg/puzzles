@@ -14,5 +14,5 @@ Both apps have the same eight games and should behave the same. A change to one 
 
 - MUST NOT commit project changes here. Change a project in its own repository, through a pull request, and let the workflow move the submodule.
 - MUST change puzzle banks in `puzzles-data` first, then bump the `puzzles-data` submodule in both apps.
-- MUST NOT bump submodules here by hand except to fix the workflow. `.github/workflows/update-submodules.yml` moves every submodule to the latest `main` when a project merges, every hour, or when run by hand.
+- MUST NOT bump submodules here by hand except to fix the workflow. `.github/workflows/update-submodules.yml` moves every submodule to the latest `main` when a project merges, or when run by hand.
 - Each project repository sends a `submodule-merged` `repository_dispatch` event here after a merge to `main`, using the `PUZZLES_DISPATCH_TOKEN` secret.

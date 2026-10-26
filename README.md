@@ -23,7 +23,6 @@ Or, in an existing clone: `git submodule update --init --recursive`.
 `.github/workflows/update-submodules.yml` moves every submodule to its latest `main` and commits the change. It runs:
 
 - when one of the three repositories merges to `main` (each sends a `submodule-merged` event),
-- every hour, in case an event was missed,
 - by hand, from the Actions tab.
 
 The three repositories send the event with a `PUZZLES_DISPATCH_TOKEN` secret: a fine-grained personal access token with **Contents: read and write** on `joclegg/puzzles`.
