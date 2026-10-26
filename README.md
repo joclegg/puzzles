@@ -25,4 +25,4 @@ Or, in an existing clone: `git submodule update --init --recursive`.
 - when one of the three repositories merges to `main` (each sends a `submodule-merged` event),
 - by hand, from the Actions tab.
 
-The three repositories send the event with a `PUZZLES_DISPATCH_TOKEN` secret: a fine-grained personal access token with **Contents: read and write** on `joclegg/puzzles`.
+The three repositories send the event with a `PUZZLES_DISPATCH_TOKEN` secret: a token that can write to `joclegg/puzzles` (currently joclegg's gh CLI token).
