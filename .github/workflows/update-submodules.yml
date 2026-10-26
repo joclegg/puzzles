@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Move every submodule to the latest main
         run: |
           git submodule update --init --remote --depth 1
@@ -29,4 +31,5 @@ jobs:
           git -c user.name="github-actions[bot]" \
             -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -q -m "Update submodules" -m "$summary"
+          git pull --rebase origin main
           git push
