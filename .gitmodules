@@ -10,3 +10,7 @@
 	path = puzzles-data
 	url = https://github.com/joclegg/puzzles-data.git
 	branch = main
+[submodule "puzzles-backend"]
+	path = puzzles-backend
+	url = https://github.com/joclegg/puzzles-backend.git
+	branch = main
