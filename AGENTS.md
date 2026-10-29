@@ -17,4 +17,4 @@ Both apps have the same eight games and should behave the same. A change to one 
 - MUST NOT commit project changes here. Change a project in its own repository, through a pull request, and let the workflow move the submodule.
 - MUST change puzzle banks in `puzzles-data` first, then bump the `puzzles-data` submodule in both apps.
 - You don't need to move the submodules yourself: when a project merges to `main`, `.github/workflows/update-submodules.yml` moves every submodule to the latest `main` and commits it here automatically. MUST NOT bump them by hand, except to fix that workflow.
-- Each project repository sends a `submodule-merged` `repository_dispatch` event here after a merge to `main`, using the `PUZZLES_DISPATCH_TOKEN` secret.
+- Each project repository sends a `submodule-merged` `repository_dispatch` event here after a merge to `main`, with a token from the `joclegg-puzzles-dispatch` GitHub App (`PUZZLES_DISPATCH_APP_KEY` secret and `PUZZLES_DISPATCH_APP_CLIENT_ID` variable, set by joclegg-infra).
