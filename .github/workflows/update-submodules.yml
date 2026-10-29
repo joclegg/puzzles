@@ -22,7 +22,7 @@ jobs:
       - name: Move every submodule to the latest main
         run: |
           git submodule update --init --remote --depth 1
-          git add puzzles-android puzzles-web puzzles-data puzzles-backend puzzles-infra
+          git add puzzles-android puzzles-web puzzles-data puzzles-backend joclegg-infra
           if git diff --cached --quiet; then
             echo "Already up to date"
             exit 0

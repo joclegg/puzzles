@@ -10,7 +10,7 @@ This repository is a wrapper. It holds the five project repositories as git subm
 | `puzzles-web/` | [joclegg/puzzles-web](https://github.com/joclegg/puzzles-web) | The website: Vite, React, TypeScript, Tailwind. Every merge to `main` deploys to https://joclegg.github.io/puzzles-web/. |
 | `puzzles-data/` | [joclegg/puzzles-data](https://github.com/joclegg/puzzles-data) | The puzzle banks and word lists both apps use. Both apps include it as their own `puzzles-data/` submodule. |
 | `puzzles-backend/` | [joclegg/puzzles-backend](https://github.com/joclegg/puzzles-backend) | The Supabase backend that syncs scores and history between both apps for signed-in players. |
-| `puzzles-infra/` | [joclegg/puzzles-infra](https://github.com/joclegg/puzzles-infra) | The Terraform for HCP Terraform and the GitHub repositories. Every merge to `main` applies it. |
+| `joclegg-infra/` | [joclegg/joclegg-infra](https://github.com/joclegg/joclegg-infra) | The Terraform for everything the joclegg account runs on: HCP Terraform, every GitHub repository and their Actions secrets. Every merge to `main` applies it. |
 
 ## Getting it
 
