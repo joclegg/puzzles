@@ -2,7 +2,7 @@
 
 Puzzles is an offline puzzle collection: Sudoku (classic and killer), Klondike Solitaire, Two Tone, Sightlines, Five Letters, Kakuro, Slide Out and Word Wheel. It ships as an Android app and as a website.
 
-This repository is a wrapper. It holds the four project repositories as git submodules, each pinned to the latest commit on its `main`.
+This repository is a wrapper. It holds the five project repositories as git submodules, each pinned to the latest commit on its `main`.
 
 | Folder | Repository | What it is |
 | --- | --- | --- |
@@ -10,6 +10,7 @@ This repository is a wrapper. It holds the four project repositories as git subm
 | `puzzles-web/` | [joclegg/puzzles-web](https://github.com/joclegg/puzzles-web) | The website: Vite, React, TypeScript, Tailwind. Every merge to `main` deploys to https://joclegg.github.io/puzzles-web/. |
 | `puzzles-data/` | [joclegg/puzzles-data](https://github.com/joclegg/puzzles-data) | The puzzle banks and word lists both apps use. Both apps include it as their own `puzzles-data/` submodule. |
 | `puzzles-backend/` | [joclegg/puzzles-backend](https://github.com/joclegg/puzzles-backend) | The Supabase backend that syncs scores and history between both apps for signed-in players. |
+| `puzzles-infra/` | [joclegg/puzzles-infra](https://github.com/joclegg/puzzles-infra) | The Terraform for HCP Terraform and the GitHub repositories. Every merge to `main` applies it. |
 
 ## Getting it
 
@@ -23,7 +24,7 @@ Or, in an existing clone: `git submodule update --init --recursive`.
 
 `.github/workflows/update-submodules.yml` moves every submodule to its latest `main` and commits the change. It runs:
 
-- when one of the four repositories merges to `main` (each sends a `submodule-merged` event),
+- when one of the five repositories merges to `main` (each sends a `submodule-merged` event),
 - by hand, from the Actions tab.
 
-The four repositories send the event with a `PUZZLES_DISPATCH_TOKEN` secret: a token that can write to `joclegg/puzzles` (currently joclegg's gh CLI token).
+The five repositories send the event with a `PUZZLES_DISPATCH_TOKEN` secret: a token that can write to `joclegg/puzzles` (currently joclegg's gh CLI token).
