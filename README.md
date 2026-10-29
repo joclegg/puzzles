@@ -27,4 +27,4 @@ Or, in an existing clone: `git submodule update --init --recursive`.
 - when one of the five repositories merges to `main` (each sends a `submodule-merged` event),
 - by hand, from the Actions tab.
 
-The five repositories send the event with a `PUZZLES_DISPATCH_TOKEN` secret: a token that can write to `joclegg/puzzles` (currently joclegg's gh CLI token).
+The five repositories send the event with a 1-hour token from the `joclegg-puzzles-dispatch` GitHub App, which is installed only on `joclegg/puzzles` with Contents write. Each has the app's key as the `PUZZLES_DISPATCH_APP_KEY` secret and its Client ID as the `PUZZLES_DISPATCH_APP_CLIENT_ID` variable, both set by [joclegg-infra](https://github.com/joclegg/joclegg-infra).
