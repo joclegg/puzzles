@@ -1,6 +1,6 @@
 # Agent notes for puzzles
 
-This is a wrapper repository. It holds no code of its own: only the four project repositories as git submodules, and a workflow that keeps them current. See `README.md` for the project overview.
+This is a wrapper repository. It holds no code of its own: only the five project repositories as git submodules, and a workflow that keeps them current. See `README.md` for the project overview.
 
 ## Projects
 
@@ -8,6 +8,7 @@ This is a wrapper repository. It holds no code of its own: only the four project
 - `puzzles-web/`: the website ([joclegg/puzzles-web](https://github.com/joclegg/puzzles-web)). Vite, React 19, TypeScript, Tailwind, Vitest and Playwright. Read its `AGENTS.md` before changing it.
 - `puzzles-data/`: the shared puzzle banks and word lists ([joclegg/puzzles-data](https://github.com/joclegg/puzzles-data)), one puzzle per line. Both apps include it as their own `puzzles-data/` submodule. Its `README.md` documents every file format.
 - `puzzles-backend/`: the Supabase backend ([joclegg/puzzles-backend](https://github.com/joclegg/puzzles-backend)). SQL migrations under `supabase/migrations/`, shared by both apps for score and history sync. Read its `README.md` before changing it.
+- `puzzles-infra/`: the Terraform for everything the apps run on ([joclegg/puzzles-infra](https://github.com/joclegg/puzzles-infra)): HCP Terraform and the GitHub repositories, one folder and workspace per area. Changes apply only after merging to `main`; locally, only plan. Read its `README.md` before changing it.
 
 Both apps have the same eight games and should behave the same. A change to one usually needs the same change in the other.
 
