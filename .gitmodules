@@ -14,7 +14,7 @@
 	path = puzzles-backend
 	url = https://github.com/joclegg/puzzles-backend.git
 	branch = main
-[submodule "puzzles-infra"]
-	path = puzzles-infra
-	url = https://github.com/joclegg/puzzles-infra.git
+[submodule "joclegg-infra"]
+	path = joclegg-infra
+	url = https://github.com/joclegg/joclegg-infra.git
 	branch = main
