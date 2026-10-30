@@ -18,3 +18,7 @@
 	path = joclegg-infra
 	url = https://github.com/joclegg/joclegg-infra.git
 	branch = main
+[submodule "puzzles-ios"]
+	path = puzzles-ios
+	url = https://github.com/joclegg/puzzles-ios.git
+	branch = main
