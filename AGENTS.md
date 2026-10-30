@@ -1,10 +1,11 @@
 # Agent notes for puzzles
 
-This is a wrapper repository. It holds no code of its own: only the five project repositories as git submodules, and a workflow that keeps them current. See `README.md` for the project overview.
+This is a wrapper repository. It holds no code of its own: only the six project repositories as git submodules, and a workflow that keeps them current. See `README.md` for the project overview.
 
 ## Projects
 
 - `puzzles-android/`: the Android app ([joclegg/puzzles-android](https://github.com/joclegg/puzzles-android)). Kotlin, Jetpack Compose, Room and DataStore, a module per game, Maestro e2e flows. It also holds the puzzle generators (`./gradlew :<game>:engine:generateBank`). Read its `AGENTS.md` before changing it.
+- `puzzles-ios/`: the iOS app ([joclegg/puzzles-ios](https://github.com/joclegg/puzzles-ios)). Not started yet: it holds only a README. It should get the same eight games as the other two, and `puzzles-data` as its own submodule.
 - `puzzles-web/`: the website ([joclegg/puzzles-web](https://github.com/joclegg/puzzles-web)). Vite, React 19, TypeScript, Tailwind, Vitest and Playwright. Read its `AGENTS.md` before changing it.
 - `puzzles-data/`: the shared puzzle banks and word lists ([joclegg/puzzles-data](https://github.com/joclegg/puzzles-data)), one puzzle per line. Both apps include it as their own `puzzles-data/` submodule. Its `README.md` documents every file format.
 - `puzzles-backend/`: the Supabase backend ([joclegg/puzzles-backend](https://github.com/joclegg/puzzles-backend)). SQL migrations under `supabase/migrations/`, shared by both apps for score and history sync. Read its `README.md` before changing it.
