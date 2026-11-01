@@ -25,7 +25,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           git submodule update --init --remote --depth 1
-          git add puzzles-android puzzles-ios puzzles-web puzzles-data puzzles-backend joclegg-infra
+          git add $(git config --file .gitmodules --get-regexp '\.path$' | cut -d' ' -f2)
           if git diff --cached --quiet; then
             echo "Already up to date"
             exit 0
