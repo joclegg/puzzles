@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: update-submodules
@@ -20,6 +21,8 @@ jobs:
         with:
           ref: main
       - name: Move every submodule to the latest main
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git submodule update --init --remote --depth 1
           git add puzzles-android puzzles-ios puzzles-web puzzles-data puzzles-backend joclegg-infra
@@ -31,5 +34,8 @@ jobs:
           git -c user.name="github-actions[bot]" \
             -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -q -m "Update submodules" -m "$summary"
-          git pull --rebase origin main
-          git push
+          # main is protected, so the update goes in through a pull request.
+          branch="update-submodules/${{ github.run_id }}"
+          git push origin "HEAD:$branch"
+          gh pr create --base main --head "$branch" --title "Update submodules" --body "$summary"
+          gh pr merge "$branch" --merge --delete-branch
