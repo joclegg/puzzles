@@ -1,21 +1,24 @@
 # Agent notes for puzzles
 
-This is a wrapper repository. It holds no code of its own: only the six project repositories as git submodules, and a workflow that keeps them current. See `README.md` for the project overview.
+This is a wrapper repository. It holds no code of its own: only the six Puzzles repositories as git submodules, and a workflow that keeps them current. See `README.md` for the overview.
 
-## Projects
+## Repositories
 
-- `puzzles-android/`: the Android app ([joclegg/puzzles-android](https://github.com/joclegg/puzzles-android)). Kotlin, Jetpack Compose, Room and DataStore, a module per game, Maestro e2e flows. It also holds the puzzle generators (`./gradlew :<game>:engine:generateBank`). Read its `AGENTS.md` before changing it.
-- `puzzles-ios/`: the iOS app ([joclegg/puzzles-ios](https://github.com/joclegg/puzzles-ios)). SwiftUI, SwiftData, Swift 6 for iOS 26, Swift packages under `Sources/`, e2e flows under `e2e/`. Read its `AGENTS.md` before changing it.
-- `puzzles-web/`: the website ([joclegg/puzzles-web](https://github.com/joclegg/puzzles-web)). Vite, React 19, TypeScript, Tailwind, Vitest and Playwright. Read its `AGENTS.md` before changing it.
-- `puzzles-data/`: the shared puzzle banks and word lists ([joclegg/puzzles-data](https://github.com/joclegg/puzzles-data)), one puzzle per line. No app includes it as a submodule: each downloads the banks it publishes to https://joclegg.github.io/puzzles-data/ at runtime. Its `README.md` documents every file format.
-- `puzzles-backend/`: the Supabase backend ([joclegg/puzzles-backend](https://github.com/joclegg/puzzles-backend)). SQL migrations under `supabase/migrations/`, shared by all three apps for score and history sync. Read its `README.md` before changing it.
-- `joclegg-infra/`: the Terraform for everything the joclegg account runs on, the Puzzles apps included ([joclegg/joclegg-infra](https://github.com/joclegg/joclegg-infra)): HCP Terraform, every GitHub repository and their Actions secrets, one folder and workspace per area. Changes apply only after merging to `main`; locally, only plan. Read its `README.md` before changing it.
+| Folder | Repository | What it is |
+| --- | --- | --- |
+| `puzzles-android/` | [joclegg/puzzles-android](https://github.com/joclegg/puzzles-android) | The Android app: Kotlin, Jetpack Compose, Room and DataStore. Also the puzzle generators (`./gradlew :<game>:engine:generateBank`). |
+| `puzzles-ios/` | [joclegg/puzzles-ios](https://github.com/joclegg/puzzles-ios) | The iOS app: SwiftUI, SwiftData and Swift packages. |
+| `puzzles-web/` | [joclegg/puzzles-web](https://github.com/joclegg/puzzles-web) | The website: Vite, React, TypeScript and Tailwind. |
+| `puzzles-data/` | [joclegg/puzzles-data](https://github.com/joclegg/puzzles-data) | The puzzle banks and word lists, which every app downloads at runtime. |
+| `puzzles-backend/` | [joclegg/puzzles-backend](https://github.com/joclegg/puzzles-backend) | The Supabase schema for score and history sync. |
+| `joclegg-infra/` | [joclegg/joclegg-infra](https://github.com/joclegg/joclegg-infra) | The Terraform for everything the apps run on. |
 
-All three apps (Android, iOS and web) have the same eight games and should behave the same. A change to one usually needs the same change in the others.
+Each repository's own `AGENTS.md` gives its structure and conventions: read it before changing that repository.
 
-## Rules
+## Managing the submodules
 
-- MUST NOT commit project changes here. Change a project in its own repository, through a pull request, and let the workflow move the submodule.
-- MUST change puzzle banks in `puzzles-data` first; the apps pick up the published banks on their own.
-- You don't need to move the submodules yourself: when a project merges to `main`, `.github/workflows/update-submodules.yml` moves every submodule to the latest `main` and commits it here automatically. MUST NOT bump them by hand, except to fix that workflow.
-- Each project repository sends a `submodule-merged` `repository_dispatch` event here after a merge to `main`, with a token from the `joclegg-puzzles-dispatch` GitHub App (`PUZZLES_DISPATCH_APP_KEY` secret and `PUZZLES_DISPATCH_APP_CLIENT_ID` variable, set by joclegg-infra).
+- MUST NOT commit project changes here. Change a project in its own repository, through a pull request to its `main`.
+- MUST NOT move the submodules by hand, except to fix `.github/workflows/update-submodules.yml`. Each merge to a project's `main` triggers that workflow, which moves every submodule and merges the change.
+- MUST make a change that affects how the games play in all three apps: Android, iOS and web have the same eight games and behave the same.
+- MUST change puzzle banks in `puzzles-data` first: the apps pick up the published banks on their own.
+- MUST add a new submodule to `.gitmodules` with `branch = main`, and to its `submodules` list in joclegg-infra's `github/repositories.tf`, so it gets the webhook that triggers the update.
