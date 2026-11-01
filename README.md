@@ -1,16 +1,16 @@
 # puzzles
 
-Puzzles is an offline puzzle collection: Sudoku (classic and killer), Klondike Solitaire, Two Tone, Sightlines, Five Letters, Kakuro, Slide Out and Word Wheel. It ships as an Android app and as a website.
+Puzzles is an offline puzzle collection: Sudoku (classic and killer), Klondike Solitaire, Two Tone, Sightlines, Five Letters, Kakuro, Slide Out and Word Wheel. It ships as an Android app, an iOS app and a website.
 
 This repository is a wrapper. It holds the six project repositories as git submodules, each pinned to the latest commit on its `main`.
 
 | Folder | Repository | What it is |
 | --- | --- | --- |
 | `puzzles-android/` | [joclegg/puzzles-android](https://github.com/joclegg/puzzles-android) | The Android app: Kotlin, Jetpack Compose, Room. Every merge to `main` publishes a release with a signed APK and app bundle. It also holds the puzzle generators. |
-| `puzzles-ios/` | [joclegg/puzzles-ios](https://github.com/joclegg/puzzles-ios) | The iOS app. Not started yet. |
+| `puzzles-ios/` | [joclegg/puzzles-ios](https://github.com/joclegg/puzzles-ios) | The iOS app: SwiftUI, SwiftData, Swift 6 for iOS 26. Every merge to `main` publishes a release with an unsigned simulator build. |
 | `puzzles-web/` | [joclegg/puzzles-web](https://github.com/joclegg/puzzles-web) | The website: Vite, React, TypeScript, Tailwind. Every merge to `main` deploys to https://joclegg.github.io/puzzles-web/. |
-| `puzzles-data/` | [joclegg/puzzles-data](https://github.com/joclegg/puzzles-data) | The puzzle banks and word lists both apps use. Both apps include it as their own `puzzles-data/` submodule. |
-| `puzzles-backend/` | [joclegg/puzzles-backend](https://github.com/joclegg/puzzles-backend) | The Supabase backend that syncs scores and history between both apps for signed-in players. |
+| `puzzles-data/` | [joclegg/puzzles-data](https://github.com/joclegg/puzzles-data) | The puzzle banks and word lists all three apps use. Each app downloads the banks it publishes to https://joclegg.github.io/puzzles-data/; none includes it as a submodule. |
+| `puzzles-backend/` | [joclegg/puzzles-backend](https://github.com/joclegg/puzzles-backend) | The Supabase backend that syncs scores and history between the apps for signed-in players. |
 | `joclegg-infra/` | [joclegg/joclegg-infra](https://github.com/joclegg/joclegg-infra) | The Terraform for everything the joclegg account runs on: HCP Terraform, every GitHub repository and their Actions secrets. Every merge to `main` applies it. |
 
 ## Getting it
